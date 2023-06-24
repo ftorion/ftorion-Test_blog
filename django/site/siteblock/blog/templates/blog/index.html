@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{%block title%}{{title}}{{block.super}}{%endblock%}
+{%block contend%}
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Blog</h1>
+    </div>
+    <div style=" display: flex; justify-content: space-between;">
+      <img src="https://sun9-35.userapi.com/impg/bcYkizQosO5lM7Hjsw354N1k1RhMYZVJYqGigw/AlB_7E1aKAQ.jpg?size=736x735&quality=96&sign=ef07a79199e64698b408768a43a7ab2a&type=album" style="width: 200px; height: 200px; border-radius: 100px;margin: 20px;" >
+      <img src="https://otkritkis.com/wp-content/uploads/2022/06/pdtrp.jpg" style="width: 200px; height: 200px; border-radius: 100px;margin: 20px;">
+      <img src="https://vkusnye-kabachki.ru/backend/uploads/Avatar/Кошечка.jpg" style="width: 200px; height: 200px; border-radius: 100px;margin: 20px;">
+      <img src="https://sun6-21.userapi.com/s/v1/if1/TwcBYcJ1r8486mhdjHS34yxecVlmsN3aiFJkD_nZeUE7VaJmmVx5MXZ9e7v3eBGBKViCzVsX.jpg?size=606x606&quality=96&crop=0,0,606,606&ava=1" style="width: 200px; height: 200px; border-radius: 100px;margin: 20px;">
+    </div>
+    <p class="lead text-muted" style="color: white;"> сайт сделан нами </p>
+  </div>
+</section>
+<div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for post in posts%}      
+        <div class="col">
+          <div class="card shadow-sm">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ post.photo.url}}">
+            <div class="card-body">
+              <a href="{{post.get_absolute_url}}" style="font-family: fantasy; font-size: 25px; color: black;">{{post.title}}</a>
+              <p class="card-text">{{post.content|truncatewords_html:20|safe}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <p  class="card-text">{{post.author}}</p>
+                </div>
+                <small class="text-muted">{{post.creared_ad|date:"j F Y" }}</small>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+{%endblock%}

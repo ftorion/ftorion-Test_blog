@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{%block title%}{{post.title}}{{block.super}}{%endblock%}
+{%block contend%}
+<div class="card">
+  <div class="card-header">
+    {{post.author}} {{post.creared_ad|date:"j F Y"}}
+  </div>
+  <div class="card-body">
+    <img style="display: block; margin-left: auto; margin-right: auto; border-radius: 10px;" src="{{post.photo.url}}">
+    <div style="margin-left: 150px; margin-right: 150px;"><p class="card-text" style="text-align: center; font-size: 20px; margin-top: 10px;  text-align: justify; " >{{post.content|safe}}</p></div>
+    <p class="card-text" style="text-align: center; font-size: 20px; margin-top: 10px;">Categori:{{post.category}}</p>
+    <p class="card-text" style="text-align: center; font-size: 20px; margin-top: 10px;">Views:{{post.views}}</p>
+    <a href="{% url 'home' %}" class="btn btn-primary" style="position: relative; left: 50%; transform: translate(-50%, 0);">home</a>
+  </div>
+</div>
+{%endblock%}
